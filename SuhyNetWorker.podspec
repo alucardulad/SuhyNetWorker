@@ -7,7 +7,7 @@ s.summary               = 'SuhyNetWorke网络模块带缓存'
 s.description           = 'SuhyNetWorker网络模块带缓存.'
 s.homepage              = 'https://github.com/alucardulad/SuhyNetWorker'
 s.authors               = { 'alucardulad' => 'alucardulad@gmail.com' }
-s.ios.deployment_target = '10.0'
+s.platform              = :ios, "10.0"
 s.source                = { :git => 'https://github.com/alucardulad/SuhyNetWorker.git',:tag => s.version  }
 s.requires_arc = true
 s.dependency 'Cache', '>= 5.0.0'
