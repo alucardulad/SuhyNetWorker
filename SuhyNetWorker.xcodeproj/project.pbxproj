@@ -13,6 +13,13 @@
 		11AC649525CA8FF5004163CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AC649325CA8FF5004163CA /* Main.storyboard */; };
 		11AC649725CA8FF6004163CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11AC649625CA8FF6004163CA /* Assets.xcassets */; };
 		11AC649A25CA8FF6004163CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AC649825CA8FF6004163CA /* LaunchScreen.storyboard */; };
+		11AC64B325CA932D004163CA /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64AC25CA932D004163CA /* RequestManager.swift */; };
+		11AC64B425CA932D004163CA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64AD25CA932D004163CA /* CacheManager.swift */; };
+		11AC64B525CA932D004163CA /* DaisyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64AE25CA932D004163CA /* DaisyLog.swift */; };
+		11AC64B625CA932D004163CA /* DaisyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64AF25CA932D004163CA /* DaisyValue.swift */; };
+		11AC64B725CA932D004163CA /* DaisyNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64B025CA932D004163CA /* DaisyNet.swift */; };
+		11AC64B825CA932D004163CA /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64B125CA932D004163CA /* DownloadManager.swift */; };
+		11AC64B925CA932D004163CA /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64B225CA932D004163CA /* CacheKey.swift */; };
 		61A20B8A5B7C3E760475C1F4 /* Pods_SuhyNetWorker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16BFB47FAE3FD00136FB1A5 /* Pods_SuhyNetWorker.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +32,13 @@
 		11AC649625CA8FF6004163CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11AC649925CA8FF6004163CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11AC649B25CA8FF6004163CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11AC64AC25CA932D004163CA /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		11AC64AD25CA932D004163CA /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		11AC64AE25CA932D004163CA /* DaisyLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaisyLog.swift; sourceTree = "<group>"; };
+		11AC64AF25CA932D004163CA /* DaisyValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaisyValue.swift; sourceTree = "<group>"; };
+		11AC64B025CA932D004163CA /* DaisyNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaisyNet.swift; sourceTree = "<group>"; };
+		11AC64B125CA932D004163CA /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		11AC64B225CA932D004163CA /* CacheKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
 		656B17BA96AF35C1BA901631 /* Pods-SuhyNetWorker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuhyNetWorker.debug.xcconfig"; path = "Target Support Files/Pods-SuhyNetWorker/Pods-SuhyNetWorker.debug.xcconfig"; sourceTree = "<group>"; };
 		C16BFB47FAE3FD00136FB1A5 /* Pods_SuhyNetWorker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuhyNetWorker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC779CE489BBF17A5E7327FD /* Pods-SuhyNetWorker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuhyNetWorker.release.xcconfig"; path = "Target Support Files/Pods-SuhyNetWorker/Pods-SuhyNetWorker.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +85,7 @@
 		11AC648C25CA8FF5004163CA /* SuhyNetWorker */ = {
 			isa = PBXGroup;
 			children = (
+				11AC64AB25CA932D004163CA /* DaisyNet */,
 				11AC648D25CA8FF5004163CA /* AppDelegate.swift */,
 				11AC648F25CA8FF5004163CA /* SceneDelegate.swift */,
 				11AC649125CA8FF5004163CA /* ViewController.swift */,
@@ -80,6 +95,20 @@
 				11AC649B25CA8FF6004163CA /* Info.plist */,
 			);
 			path = SuhyNetWorker;
+			sourceTree = "<group>";
+		};
+		11AC64AB25CA932D004163CA /* DaisyNet */ = {
+			isa = PBXGroup;
+			children = (
+				11AC64AC25CA932D004163CA /* RequestManager.swift */,
+				11AC64AD25CA932D004163CA /* CacheManager.swift */,
+				11AC64AE25CA932D004163CA /* DaisyLog.swift */,
+				11AC64AF25CA932D004163CA /* DaisyValue.swift */,
+				11AC64B025CA932D004163CA /* DaisyNet.swift */,
+				11AC64B125CA932D004163CA /* DownloadManager.swift */,
+				11AC64B225CA932D004163CA /* CacheKey.swift */,
+			);
+			path = DaisyNet;
 			sourceTree = "<group>";
 		};
 		FEBE5826553BFF5615CAB5C4 /* Pods */ = {
@@ -205,9 +234,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11AC64B925CA932D004163CA /* CacheKey.swift in Sources */,
 				11AC649225CA8FF5004163CA /* ViewController.swift in Sources */,
+				11AC64B425CA932D004163CA /* CacheManager.swift in Sources */,
+				11AC64B725CA932D004163CA /* DaisyNet.swift in Sources */,
 				11AC648E25CA8FF5004163CA /* AppDelegate.swift in Sources */,
 				11AC649025CA8FF5004163CA /* SceneDelegate.swift in Sources */,
+				11AC64B325CA932D004163CA /* RequestManager.swift in Sources */,
+				11AC64B525CA932D004163CA /* DaisyLog.swift in Sources */,
+				11AC64B825CA932D004163CA /* DownloadManager.swift in Sources */,
+				11AC64B625CA932D004163CA /* DaisyValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
