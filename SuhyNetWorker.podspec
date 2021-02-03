@@ -7,8 +7,10 @@ s.summary               = 'SuhyNetWorke网络模块带缓存'
 s.description           = 'SuhyNetWorker网络模块带缓存.'
 s.homepage              = 'https://github.com/alucardulad/SuhyNetWorker'
 s.authors               = { 'alucardulad' => 'alucardulad@gmail.com' }
-s.ios.deployment_target = '9.0'
+s.ios.deployment_target = '10.0'
 s.source                = { :git => 'https://github.com/alucardulad/SuhyNetWorker.git',:tag => s.version  }
 s.requires_arc = true
-s.source_files = 'DaisyNet/DaisyNet/*.{swift}'
+s.dependency 'Cache', '>= 5.0.0'
+s.dependency 'Alamofire', '>= 4.5.1'
+s.source_files = 'DaisyNet/DaisyNet/*.swift'
 end
