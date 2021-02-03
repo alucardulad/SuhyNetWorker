@@ -15,4 +15,4 @@ s.dependency 'Alamofire', '>= 4.5.1'
 s.source_files = "SuhyNetWorker/SuhyNetWorker/DaisyNet", "SuhyNetWorker/SuhyNetWorker/DaisyNet/*.swift" 
 s.pod_target_xcconfig = { "SWIFT_VERSION" => "5.0" }
 s.swift_version = '5.0'
-end/Users/suhongyi/SuhyNetWorker/SuhyNetWorker/DaisyNet
+end
