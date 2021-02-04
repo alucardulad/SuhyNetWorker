@@ -134,6 +134,30 @@ SuhyNetWorker.downloadCancel(url)
 SuhyNetWorker.downloadCancelAll()
 ```
 
+### 3.SuhyNetWorkerProtocol协议协议封装网络请求
+* SuhyNetWorkerProtocol协议
+```swift
+protocol SuhyNetWorkerProtocol {
+    var baseUrl:String! { get } //根节点
+    var url:String! { get }//子节点
+    var apiType:HTTPMethod! { get }
+    var params:[String: AnyObject]! { get }
+    var headParams:HTTPHeaders! { get }
+    var dynamicParams:[String: AnyObject]! { get }//可忽略的参数
+    var isNeedCache:Bool! { get }//是否启用缓存策略
+    var encoding:ParameterEncoding! { get }//转码格式
+}
+```
+* 请求方法
+```swift
+func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping (SuhyValue<Any>)->())
+```
+
+* 实现`SuhyNetWorkerProtocol`后，封装方法函数
+* 调用`requestAPIModel`可以实现如moya一样的网络封装。
+* 通过`SuhyNetWorkerProtocol`协议，可以让你只关心调用协议。把网络层交给自定义的APIModel本身。
+
+
 ## Install
 ```
 1.pod 'SuhyNetWorker'
@@ -144,4 +168,5 @@ SuhyNetWorker.downloadCancelAll()
 ## LICENSE
 
 SuhyNetWorker is released under the MIT license. See [LICENSE](https://github.com/MQZHot/SuhyNetWorker/blob/master/LICENSE) for details.
+
 
