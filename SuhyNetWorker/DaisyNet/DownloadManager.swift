@@ -1,11 +1,11 @@
 //
 //  DownloadManager.swift
-//  DaisyNet
+//  SuhyNetWorker
 //
-//  Created by MQZHot on 2017/10/12.
-//  Copyright © 2017年 MQZHot. All rights reserved.
+//  Created by Alucardulad on 2020/10/12.
+//  Copyright © 2020年 Alucardulad. All rights reserved.
 //
-//  https://github.com/MQZHot/DaisyNet
+//  https://github.com/Alucardulad/SuhyNetWorker
 //
 import Foundation
 import Alamofire
@@ -45,7 +45,7 @@ class DownloadManager {
         let key = cacheKey(url, parameters, dynamicParams)
         let task = downloadTasks[key]
         task?.downloadRequest?.cancel()
-        NotificationCenter.default.post(name: NSNotification.Name("DaisyDownloadCancel"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("SuhyDownloadCancel"), object: nil)
     }
 
     // Cancel all tasks
@@ -76,7 +76,7 @@ class DownloadManager {
                     let fileURL = cachesURL.appendingPathComponent(arr.last!)
                     try FileManager.default.removeItem(at: fileURL)
                 } catch {
-                    DaisyLog(error)
+                    SuhyLog(error)
                 }
             }
             CacheManager.default.removeObjectCache(key, completion: completion)
@@ -147,7 +147,7 @@ public class DownloadTaskManager {
          parameters: Parameters? = nil,
          dynamicParams: Parameters? = nil) {
         key = cacheKey(url, parameters, dynamicParams)
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadCancel), name: NSNotification.Name.init("DaisyDownloadCancel"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(downloadCancel), name: NSNotification.Name.init("SuhyDownloadCancel"), object: nil)
         NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil) { (_) in
             self.downloadRequest?.cancel()
         }

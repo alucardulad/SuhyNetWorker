@@ -1,11 +1,11 @@
 //
 //  CacheKey.swift
-//  DaisyNet
+//  SuhyNetWorker
 //
-//  Created by MQZHot on 2017/10/29.
-//  Copyright © 2017年 MQZHot. All rights reserved.
+//  Created by Alucardulad on 2020/10/29.
+//  Copyright © 2020年 Alucardulad. All rights reserved.
 //
-//  https://github.com/MQZHot/DaisyNet
+//  https://github.com/Alucardulad/SuhyNetWorker
 //
 
 import Foundation

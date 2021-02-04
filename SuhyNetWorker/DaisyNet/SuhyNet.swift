@@ -1,11 +1,11 @@
 //
-//  DaisyNet.swift
+//  SuhyNetWorker.swift
 //  ZoneHot
 //
-//  Created by MQZHot on 2017/10/10.
-//  Copyright © 2017年 MQZHot. All rights reserved.
+//  Created by Alucardulad on 2020/10/10.
+//  Copyright © 2020年 Alucardulad. All rights reserved.
 //
-//  https://github.com/MQZHot/DaisyNet
+//  https://github.com/Alucardulad/SuhyNetWorker
 //
 
 import UIKit
@@ -14,8 +14,8 @@ import Cache
 
 /// 缓存过期时间
 ///
-/// - Parameter expiry: 参考 DaisyExpiry
-public func cacheExpiryConfig(expiry: DaisyExpiry) {
+/// - Parameter expiry: 参考 SuhyExpiry
+public func cacheExpiryConfig(expiry: SuhyExpiry) {
     CacheManager.default.expiryConfiguration(expiry: expiry)
 }
 

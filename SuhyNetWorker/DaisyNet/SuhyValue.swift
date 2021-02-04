@@ -1,18 +1,18 @@
 //
-//  DaisyValue.swift
-//  DaisyNet
+//  SuhyValue.swift
+//  SuhyNetWorker
 //
-//  Created by MQZHot on 2017/10/12.
-//  Copyright © 2017年 MQZHot. All rights reserved.
+//  Created by Alucardulad on 2020/10/12.
+//  Copyright © 2020年 Alucardulad. All rights reserved.
 //
-//  https://github.com/MQZHot/DaisyNet
+//  https://github.com/Alucardulad/SuhyNetWorker
 //
 import Foundation
 import Alamofire
 
 
 //// MARK: - Result
-public struct DaisyValue<Value> {
+public struct SuhyValue<Value> {
     
     public let isCacheData: Bool
     public let result: Alamofire.AFResult<Value>

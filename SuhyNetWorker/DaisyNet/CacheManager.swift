@@ -1,16 +1,16 @@
 //
 //  CacheManager.swift
-//  MQZHot
+//  Alucardulad
 //
-//  Created by MQZHot on 2017/10/17.
-//  Copyright © 2017年 MQZHot. All rights reserved.
+//  Created by Alucardulad on 2020/10/17.
+//  Copyright © 2020年 Alucardulad. All rights reserved.
 //
-//  https://github.com/MQZHot/DaisyNet
+//  https://github.com/Alucardulad/SuhyNetWorker
 //
 import Foundation
 import Cache
 
-public enum DaisyExpiry {
+public enum SuhyExpiry {
     /// Object will be expired in the nearest future
     case never
     /// Object will be expired in the specified amount of seconds
@@ -49,19 +49,19 @@ class CacheManager: NSObject {
         super.init()
         expiryConfiguration()
     }
-    var expiry: DaisyExpiry = .never
+    var expiry: SuhyExpiry = .never
     
-    func expiryConfiguration(expiry: DaisyExpiry = .never) {
+    func expiryConfiguration(expiry: SuhyExpiry = .never) {
         self.expiry = expiry
         let diskConfig = DiskConfig(
-            name: "DaisyCache",
+            name: "SuhyCache",
             expiry: expiry.expiry
         )
         let memoryConfig = MemoryConfig(expiry: expiry.expiry)
         do {
             storage = try Storage(diskConfig: diskConfig, memoryConfig: memoryConfig, transformer: TransformerFactory.forCodable(ofType: CacheModel.self))
         } catch {
-            DaisyLog(error)
+            SuhyLog(error)
         }
     }
     
@@ -122,9 +122,9 @@ class CacheManager: NSObject {
         storage?.async.setObject(object, forKey: key, expiry: nil, completion: { (result) in
             switch result {
             case .value(_):
-                DaisyLog("缓存成功")
+                SuhyLog("缓存成功")
             case .error(let error):
-                DaisyLog("缓存失败: \(error)")
+                SuhyLog("缓存失败: \(error)")
             }
         })
     }

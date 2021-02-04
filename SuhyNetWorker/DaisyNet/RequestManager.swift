@@ -1,11 +1,11 @@
 //
 //  RequestManager.swift
-//  DaisyNet
+//  SuhyNetWorker
 //
-//  Created by MQZHot on 2017/10/12.
-//  Copyright © 2017年 MQZHot. All rights reserved.
+//  Created by Alucardulad on 2020/10/12.
+//  Copyright © 2020年 Alucardulad. All rights reserved.
 //
-//  https://github.com/MQZHot/DaisyNet
+//  https://github.com/Alucardulad/SuhyNetWorker
 //
 import Foundation
 import Alamofire
@@ -176,55 +176,55 @@ public class RequestTaskManager {
     }
     /// 获取缓存Data
     @discardableResult
-    public func cacheData(completion: @escaping (Data)->()) -> DaisyDataResponse {
-        let dataResponse = DaisyDataResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func cacheData(completion: @escaping (Data)->()) -> SuhyDataResponse {
+        let dataResponse = SuhyDataResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         return dataResponse.cacheData(completion: completion)
     }
     /// 响应Data
-    public func responseData(completion: @escaping (DaisyValue<Data>)->()) {
-        let dataResponse = DaisyDataResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func responseData(completion: @escaping (SuhyValue<Data>)->()) {
+        let dataResponse = SuhyDataResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         dataResponse.responseData(completion: completion)
     }
     /// 先获取Data缓存，再响应Data
-    public func responseCacheAndData(completion: @escaping (DaisyValue<Data>)->()) {
-        let dataResponse = DaisyDataResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func responseCacheAndData(completion: @escaping (SuhyValue<Data>)->()) {
+        let dataResponse = SuhyDataResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         dataResponse.responseCacheAndData(completion: completion)
     }
     /// 获取缓存String
     @discardableResult
-    public func cacheString(completion: @escaping (String)->()) -> DaisyStringResponse {
-        let stringResponse = DaisyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func cacheString(completion: @escaping (String)->()) -> SuhyStringResponse {
+        let stringResponse = SuhyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         return stringResponse.cacheString(completion:completion)
     }
     /// 响应String
-    public func responseString(completion: @escaping (DaisyValue<String>)->()) {
-        let stringResponse = DaisyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func responseString(completion: @escaping (SuhyValue<String>)->()) {
+        let stringResponse = SuhyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         stringResponse.responseString(completion: completion)
     }
     /// 先获取缓存String,再响应String
-    public func responseCacheAndString(completion: @escaping (DaisyValue<String>)->()) {
-        let stringResponse = DaisyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func responseCacheAndString(completion: @escaping (SuhyValue<String>)->()) {
+        let stringResponse = SuhyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         stringResponse.responseCacheAndString(completion: completion)
     }
     /// 获取缓存JSON
     @discardableResult
-    public func cacheJson(completion: @escaping (Any)->()) -> DaisyJsonResponse {
-        let jsonResponse = DaisyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func cacheJson(completion: @escaping (Any)->()) -> SuhyJsonResponse {
+        let jsonResponse = SuhyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         return jsonResponse.cacheJson(completion:completion)
     }
     /// 响应JSON
-    public func responseJson(completion: @escaping (DaisyValue<Any>)->()) {
-        let jsonResponse = DaisyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func responseJson(completion: @escaping (SuhyValue<Any>)->()) {
+        let jsonResponse = SuhyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         jsonResponse.responseJson(completion: completion)
     }
     /// 先获取缓存JSON，再响应JSON
-    public func responseCacheAndJson(completion: @escaping (DaisyValue<Any>)->()) {
-        let jsonResponse = DaisyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
+    public func responseCacheAndJson(completion: @escaping (SuhyValue<Any>)->()) {
+        let jsonResponse = SuhyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         jsonResponse.responseCacheAndJson(completion: completion)
     }
 }
-// MARK: - DaisyBaseResponse
-public class DaisyResponse {
+// MARK: - SuhyBaseResponse
+public class SuhyResponse {
     fileprivate var dataRequest: DataRequest
     fileprivate var cache: Bool
     fileprivate var cacheKey: String
@@ -236,27 +236,27 @@ public class DaisyResponse {
         self.completionClosure = completionClosure
     }
     ///
-    fileprivate func response<T>(response: AFDataResponse<T>, completion: @escaping (DaisyValue<T>)->()) {
+    fileprivate func response<T>(response: AFDataResponse<T>, completion: @escaping (SuhyValue<T>)->()) {
         responseCache(response: response) { (result) in
             completion(result)
         }
     }
     /// isCacheData
-    fileprivate func responseCache<T>(response: AFDataResponse<T>, completion: @escaping (DaisyValue<T>)->()) {
+    fileprivate func responseCache<T>(response: AFDataResponse<T>, completion: @escaping (SuhyValue<T>)->()) {
         if completionClosure != nil { completionClosure!() }
-        let result = DaisyValue(isCacheData: false, result: response.result, response: response.response)
+        let result = SuhyValue(isCacheData: false, result: response.result, response: response.response)
         if openResultLog {
-            DaisyLog("================请求数据=====================")
+            SuhyLog("================请求数据=====================")
         }
         if openUrlLog {
-            DaisyLog(response.request?.url?.absoluteString ?? "")
+            SuhyLog(response.request?.url?.absoluteString ?? "")
         }
         switch response.result {
         case .success(_):
             if openResultLog {
                 if let data = response.data,
                     let str = String(data: data, encoding: .utf8) {
-                    DaisyLog(str)
+                    SuhyLog(str)
                 }
             }
             if self.cache {/// 写入缓存
@@ -266,23 +266,23 @@ public class DaisyResponse {
             }
         case .failure(let error):
             if openResultLog {
-                DaisyLog(error.localizedDescription)
+                SuhyLog(error.localizedDescription)
             }
         }
         completion(result)
     }
 }
-// MARK: - DaisyJsonResponse
-public class DaisyJsonResponse: DaisyResponse {
+// MARK: - SuhyJsonResponse
+public class SuhyJsonResponse: SuhyResponse {
     /// 响应JSON
-    func responseJson(completion: @escaping (DaisyValue<Any>)->()) {
+    func responseJson(completion: @escaping (SuhyValue<Any>)->()) {
         dataRequest.responseJSON(completionHandler: { response in
             self.response(response: response, completion: completion)
         })
     }
-    fileprivate func responseCacheAndJson(completion: @escaping (DaisyValue<Any>)->()) {
+    fileprivate func responseCacheAndJson(completion: @escaping (SuhyValue<Any>)->()) {
         if cache { cacheJson(completion: { (json) in
-            let res = DaisyValue(isCacheData: true, result: Alamofire.AFResult.success(json), response: nil)
+            let res = SuhyValue(isCacheData: true, result: Alamofire.AFResult.success(json), response: nil)
             completion(res)
         }) }
         dataRequest.responseJSON { (response) in
@@ -291,47 +291,47 @@ public class DaisyJsonResponse: DaisyResponse {
     }
     /// 获取缓存json
     @discardableResult
-    fileprivate func cacheJson(completion: @escaping (Any)->()) -> DaisyJsonResponse {
+    fileprivate func cacheJson(completion: @escaping (Any)->()) -> SuhyJsonResponse {
         if let data = CacheManager.default.objectSync(forKey: cacheKey)?.data,
             let json = try? JSONSerialization.jsonObject(with: data, options: []) {
             if openResultLog {
-                DaisyLog("=================缓存=====================")
+                SuhyLog("=================缓存=====================")
                 if let str = String(data: data, encoding: .utf8) {
-                    DaisyLog(str)
+                    SuhyLog(str)
                 }
             }
             completion(json)
         } else {
             if openResultLog {
-                DaisyLog("读取缓存失败")
+                SuhyLog("读取缓存失败")
             }
         }
         return self
     }
 }
-// MARK: - DaisyStringResponse
-public class DaisyStringResponse: DaisyResponse {
+// MARK: - SuhyStringResponse
+public class SuhyStringResponse: SuhyResponse {
     /// 响应String
-    func responseString(completion: @escaping (DaisyValue<String>)->()) {
+    func responseString(completion: @escaping (SuhyValue<String>)->()) {
         dataRequest.responseString(completionHandler: { response in
             self.response(response: response, completion: completion)
         })
     }
     @discardableResult
-    fileprivate func cacheString(completion: @escaping (String)->()) -> DaisyStringResponse {
+    fileprivate func cacheString(completion: @escaping (String)->()) -> SuhyStringResponse {
         if let data = CacheManager.default.objectSync(forKey: cacheKey)?.data,
             let str = String(data: data, encoding: .utf8) {
             completion(str)
         } else {
             if openResultLog {
-                DaisyLog("读取缓存失败")
+                SuhyLog("读取缓存失败")
             }
         }
         return self
     }
-    fileprivate func responseCacheAndString(completion: @escaping (DaisyValue<String>)->()) {
+    fileprivate func responseCacheAndString(completion: @escaping (SuhyValue<String>)->()) {
         if cache { cacheString(completion: { str in
-            let res = DaisyValue(isCacheData: true, result: Alamofire.AFResult.success(str), response: nil)
+            let res = SuhyValue(isCacheData: true, result: Alamofire.AFResult.success(str), response: nil)
             completion(res)
         })}
         dataRequest.responseString { (response) in
@@ -339,28 +339,28 @@ public class DaisyStringResponse: DaisyResponse {
         }
     }
 }
-// MARK: - DaisyDataResponse
-public class DaisyDataResponse: DaisyResponse {
+// MARK: - SuhyDataResponse
+public class SuhyDataResponse: SuhyResponse {
     /// 响应Data
-    func responseData(completion: @escaping (DaisyValue<Data>)->()) {
+    func responseData(completion: @escaping (SuhyValue<Data>)->()) {
         dataRequest.responseData(completionHandler: { response in
             self.response(response: response, completion: completion)
         })
     }
     @discardableResult
-    fileprivate func cacheData(completion: @escaping (Data)->()) -> DaisyDataResponse {
+    fileprivate func cacheData(completion: @escaping (Data)->()) -> SuhyDataResponse {
         if let data = CacheManager.default.objectSync(forKey: cacheKey)?.data {
             completion(data)
         } else {
             if openResultLog {
-                DaisyLog("读取缓存失败")
+                SuhyLog("读取缓存失败")
             }
         }
         return self
     }
-    fileprivate func responseCacheAndData(completion: @escaping (DaisyValue<Data>)->()) {
+    fileprivate func responseCacheAndData(completion: @escaping (SuhyValue<Data>)->()) {
         if cache { cacheData(completion: { (data) in
-            let res = DaisyValue(isCacheData: true, result: Alamofire.AFResult.success(data), response: nil)
+            let res = SuhyValue(isCacheData: true, result: Alamofire.AFResult.success(data), response: nil)
             completion(res)
         }) }
         dataRequest.responseData { (response) in
