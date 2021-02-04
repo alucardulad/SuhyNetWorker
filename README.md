@@ -3,7 +3,7 @@
 
 ![](https://img.shields.io/badge/support-swift%204%2B-green.svg)   ![](https://img.shields.io/cocoapods/v/SuhyNetWorker.svg?style=flat)
 
-对[Alamofire](https://github.com/Alamofire/Alamofire)与[Cache](https://github.com/hyperoslo/Cache)的封装实现对网络数据的缓存，可以存储JSON，String，Data.
+对[Alamofire](https://github.com/Alamofire/Alamofire)与[Cache](https://github.com/hyperoslo/Cache)的封装实现对网络数据的缓存和如moya通过协议优雅的调用网络模块，可以存储JSON，String，Data。
 
 
 ## 使用
