@@ -1,4 +1,3 @@
-# SuhyNetWorker
 
 ## SuhyNet
 
@@ -6,11 +5,6 @@
 
 对[Alamofire](https://github.com/Alamofire/Alamofire)与[Cache](https://github.com/hyperoslo/Cache)的封装实现对网络数据的缓存，可以存储JSON，String，Data.
 
-
-<p align="center">
-<img src="https://github.com/MQZHot/SuhyNet/raw/master/Picture/get.gif">
-<img src="https://github.com/MQZHot/SuhyNet/raw/master/Picture/download.gif">
-</p>
 
 ## 使用
 
@@ -147,11 +141,7 @@ SuhyNet.downloadCancelAll()
 2.pod install / pod update
 ```
 
-## Author
-
-* Email: mqz1228@163.com
-
 ## LICENSE
 
-SuhyNet is released under the MIT license.
+SuhyNet is released under the MIT license. See [LICENSE](https://github.com/MQZHot/SuhyNet/blob/master/LICENSE) for details.
 
