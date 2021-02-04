@@ -6,7 +6,6 @@ target 'SuhyNetWorker' do
 
 pod 'Alamofire'
 pod 'Cache'
-
 end
 
 post_install do |installer|
