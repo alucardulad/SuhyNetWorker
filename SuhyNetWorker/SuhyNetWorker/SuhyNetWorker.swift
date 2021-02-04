@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 /// api协议
-protocol SuhyNetWorkerProtocol {
+public protocol SuhyNetWorkerProtocol {
     var baseUrl:String! { get }
     var url:String! { get }
     var apiType:HTTPMethod! { get }
@@ -26,7 +26,7 @@ protocol SuhyNetWorkerProtocol {
 ///   - api: api模型
 ///   - finishedCallback: 返回提示语句和返回数据
 /// - Returns:
-func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping (SuhyValue<Any>)->()){
+public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping (SuhyValue<Any>)->()){
     SuhyNetWorker.request(api.url, method:api.apiType, params: api.params, dynamicParams: api.dynamicParams, encoding: api.encoding, headers: api.headParams).responseCacheAndJson { (obj) in
         finishedCallback(obj)
     }
