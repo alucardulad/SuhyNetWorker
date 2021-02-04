@@ -1,7 +1,7 @@
 
-## SuhyNet
+## SuhyNetWorker
 
-![](https://img.shields.io/badge/support-swift%204%2B-green.svg)   ![](https://img.shields.io/cocoapods/v/SuhyNet.svg?style=flat)
+![](https://img.shields.io/badge/support-swift%204%2B-green.svg)   ![](https://img.shields.io/cocoapods/v/SuhyNetWorker.svg?style=flat)
 
 对[Alamofire](https://github.com/Alamofire/Alamofire)与[Cache](https://github.com/hyperoslo/Cache)的封装实现对网络数据的缓存，可以存储JSON，String，Data.
 
@@ -26,7 +26,7 @@ func request(
 * 调用`responseCacheAndString`可以先读取缓存数据，再读取网络数据
 * 通过`isCacheData`属性可以区分缓存数据还是网络数据
 ```swift
-SuhyNet.request(url, params: params).cache(true).responseCacheAndJson { value in
+SuhyNetWorker.request(url, params: params).cache(true).responseCacheAndJson { value in
     switch value.result {
     case .success(let json):
         if value.isCacheData {
@@ -44,7 +44,7 @@ SuhyNet.request(url, params: params).cache(true).responseCacheAndJson { value in
 * 调用`cacheJson`方法获取缓存数据，调用`responseJson`获取网络数据
 
 ```swift
-SuhyNet.request(url, params: params).cache(true).cacheJson { json in
+SuhyNetWorker.request(url, params: params).cache(true).cacheJson { json in
         print("我是缓存的")
     }.responseJson { response in
     print("我是网络的")
@@ -52,7 +52,7 @@ SuhyNet.request(url, params: params).cache(true).cacheJson { json in
 ```
 * 如果你不需要缓存，可以直接调用`responseJson`方法
 ```swift
-SuhyNet.request(url).responseString { response in
+SuhyNetWorker.request(url).responseString { response in
     switch response {
     case .success(let value): print(value)
     case .failure(let error): print(error)
@@ -63,12 +63,12 @@ SuhyNet.request(url).responseString { response in
 * 同理，如果你要缓存`Data`或者`String`，与`JSON`是相似的
 ```swift
 /// 先读取缓存，再读取网络数据
-SuhyNet.request(url).cache(true).responseCacheAndString { value in }
-SuhyNet.request(url).cache(true).responseCacheAndData { value in }
+SuhyNetWorker.request(url).cache(true).responseCacheAndString { value in }
+SuhyNetWorker.request(url).cache(true).responseCacheAndData { value in }
 ```
 ```swift
 /// 分别获取缓存和网络数据
-SuhyNet.request(url).cache(true).cacheString { string in
+SuhyNetWorker.request(url).cache(true).cacheString { string in
         print("我是缓存的")
     }.responseString { response in
     print("我是网络的")
@@ -76,7 +76,7 @@ SuhyNet.request(url).cache(true).cacheString { string in
 ```
 * 取消请求
 ```swift
-SuhyNet.cancel(url, params: params)
+SuhyNetWorker.cancel(url, params: params)
 ```
 
 * 清除缓存
@@ -90,7 +90,7 @@ func removeObjectCache(_ url: String, params: [String: Any]? = nil, completion: 
 ### 2. 下载
 
 ```swift
-SuhyNet.download(url).downloadProgress { progress in
+SuhyNetWorker.download(url).downloadProgress { progress in
         /// 下载进度
     }.response { response in
     /// 下载完成
@@ -98,7 +98,7 @@ SuhyNet.download(url).downloadProgress { progress in
 ```
 * 如果正在下载中退出当前界面，再次进入时可以通过以下方法获取下载进度，并改变UI
 ```swift
-SuhyNet.downloadProgress(url) {
+SuhyNetWorker.downloadProgress(url) {
         print($0)
     }?.response(completion: { _ in
     print("下载完成")
@@ -106,42 +106,42 @@ SuhyNet.downloadProgress(url) {
 ```
 * 获取下载状态
 ```swift
-SuhyNet.downloadStatus(url)
+SuhyNetWorker.downloadStatus(url)
 ```
 
 * 获取下载百分比
 ```swift
-SuhyNet.downloadPercent(url)
+SuhyNetWorker.downloadPercent(url)
 ```
 
 * 获取下载完成后文件所在位置
 ```swift
-DSuhyNet.downloadFilePath(url)
+DSuhyNetWorker.downloadFilePath(url)
 ```
 
 * 删除某个下载
 ```swift
-SuhyNet.downloadDelete(url)
+SuhyNetWorker.downloadDelete(url)
 ```
 
 * 取消某个下载
 ```swift
-SuhyNet.downloadCancel(url)
+SuhyNetWorker.downloadCancel(url)
 ```
 
 * 取消所有下载
 ```swift
-SuhyNet.downloadCancelAll()
+SuhyNetWorker.downloadCancelAll()
 ```
 
 ## Install
 ```
-1.pod 'SuhyNet'
+1.pod 'SuhyNetWorker'
 
 2.pod install / pod update
 ```
 
 ## LICENSE
 
-SuhyNet is released under the MIT license. See [LICENSE](https://github.com/MQZHot/SuhyNet/blob/master/LICENSE) for details.
+SuhyNetWorker is released under the MIT license. See [LICENSE](https://github.com/MQZHot/SuhyNetWorker/blob/master/LICENSE) for details.
 
