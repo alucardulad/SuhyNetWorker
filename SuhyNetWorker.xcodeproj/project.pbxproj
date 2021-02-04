@@ -20,6 +20,7 @@
 		11AC64B725CA932D004163CA /* SuhyNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64B025CA932D004163CA /* SuhyNet.swift */; };
 		11AC64B825CA932D004163CA /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64B125CA932D004163CA /* DownloadManager.swift */; };
 		11AC64B925CA932D004163CA /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC64B225CA932D004163CA /* CacheKey.swift */; };
+		11F7BAAE25CBD488003E6946 /* SuhyNetWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7BAAD25CBD488003E6946 /* SuhyNetWorker.swift */; };
 		61A20B8A5B7C3E760475C1F4 /* Pods_SuhyNetWorker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16BFB47FAE3FD00136FB1A5 /* Pods_SuhyNetWorker.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		11AC64B025CA932D004163CA /* SuhyNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuhyNet.swift; sourceTree = "<group>"; };
 		11AC64B125CA932D004163CA /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		11AC64B225CA932D004163CA /* CacheKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
+		11F7BAAD25CBD488003E6946 /* SuhyNetWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuhyNetWorker.swift; sourceTree = "<group>"; };
 		656B17BA96AF35C1BA901631 /* Pods-SuhyNetWorker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuhyNetWorker.debug.xcconfig"; path = "Target Support Files/Pods-SuhyNetWorker/Pods-SuhyNetWorker.debug.xcconfig"; sourceTree = "<group>"; };
 		C16BFB47FAE3FD00136FB1A5 /* Pods_SuhyNetWorker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuhyNetWorker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC779CE489BBF17A5E7327FD /* Pods-SuhyNetWorker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuhyNetWorker.release.xcconfig"; path = "Target Support Files/Pods-SuhyNetWorker/Pods-SuhyNetWorker.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		11AC648C25CA8FF5004163CA /* SuhyNetWorker */ = {
 			isa = PBXGroup;
 			children = (
-				11AC64AB25CA932D004163CA /* DaisyNet */,
+				11AC64AB25CA932D004163CA /* SuhyNetWorker */,
 				11AC648D25CA8FF5004163CA /* AppDelegate.swift */,
 				11AC648F25CA8FF5004163CA /* SceneDelegate.swift */,
 				11AC649125CA8FF5004163CA /* ViewController.swift */,
@@ -97,7 +99,7 @@
 			path = SuhyNetWorker;
 			sourceTree = "<group>";
 		};
-		11AC64AB25CA932D004163CA /* DaisyNet */ = {
+		11AC64AB25CA932D004163CA /* SuhyNetWorker */ = {
 			isa = PBXGroup;
 			children = (
 				11AC64AC25CA932D004163CA /* RequestManager.swift */,
@@ -107,8 +109,9 @@
 				11AC64B025CA932D004163CA /* SuhyNet.swift */,
 				11AC64B125CA932D004163CA /* DownloadManager.swift */,
 				11AC64B225CA932D004163CA /* CacheKey.swift */,
+				11F7BAAD25CBD488003E6946 /* SuhyNetWorker.swift */,
 			);
-			path = DaisyNet;
+			path = SuhyNetWorker;
 			sourceTree = "<group>";
 		};
 		FEBE5826553BFF5615CAB5C4 /* Pods */ = {
@@ -241,6 +244,7 @@
 				11AC648E25CA8FF5004163CA /* AppDelegate.swift in Sources */,
 				11AC649025CA8FF5004163CA /* SceneDelegate.swift in Sources */,
 				11AC64B325CA932D004163CA /* RequestManager.swift in Sources */,
+				11F7BAAE25CBD488003E6946 /* SuhyNetWorker.swift in Sources */,
 				11AC64B525CA932D004163CA /* SuhyLog.swift in Sources */,
 				11AC64B825CA932D004163CA /* DownloadManager.swift in Sources */,
 				11AC64B625CA932D004163CA /* SuhyValue.swift in Sources */,
@@ -398,7 +402,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.suhy.SuhyNetWorker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -419,7 +423,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.suhy.SuhyNetWorker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
