@@ -47,7 +47,7 @@ public enum RequestModel {
 ///   - finishedCallback: 返回提示语句和返回数据
 /// - Returns:
 public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping (SuhyValue<Any>)->()){
-    SuhyNetWorker.request(api.url, method:api.apiType, params: api.params, dynamicParams: api.dynamicParams, encoding: api.encoding, headers: api.headParams).responseCacheAndJson { (obj) in
+    SuhyNetWorker.request(api.url, method:api.apiType, params: api.params, dynamicParams: api.dynamicParams, encoding: api.encoding, headers: api.headParams).cache(api.isNeedCache).responseCacheAndJson { (obj) in
         finishedCallback(obj)
     }
 }
