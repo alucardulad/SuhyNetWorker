@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.4.1)
   - Cache (5.3.0)
+  - CleanJSON (1.0.8)
 
 DEPENDENCIES:
   - Alamofire
   - Cache
+  - CleanJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Cache
+    - CleanJSON
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Cache: 48762993ec44e1d93483c4d4a13edd18452326f4
+  CleanJSON: 7cc2fbb8f3face17e80a25a2266199ad31002bfc
 
-PODFILE CHECKSUM: 0a404d1a3d17cae338c8b2c4b166edaa9877004b
+PODFILE CHECKSUM: 433cf36504c6b8b4b4a65b03b367ffde62d71830
 
 COCOAPODS: 1.10.1

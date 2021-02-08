@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-
+import CleanJSON
 open class SuhyNetWorkerBaseModel:NSObject,Codable {
 
 }
@@ -123,6 +123,7 @@ func ArrayToJSON(array:[Any]) -> Data {
 }
  func toModel<T:Codable>(someModel:T.Type,dic:Any)->T {
     let json = SuhyNetWorker.DictionaryToJSON(dic:dic)
-    let temp = try! JSONDecoder().decode(someModel, from: json)
+    let decoder = CleanJSONDecoder()
+    let temp = try! decoder.decode(someModel, from: json)
     return temp
 }
