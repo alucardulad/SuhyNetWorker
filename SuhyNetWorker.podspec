@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name                  = 'SuhyNetWorker'
-s.version               = '1.3.3'
+s.version               = '1.3.4'
 s.license               = { :type => 'MIT'}
 s.summary               = 'SuhyNetWorke网络模块带缓存'
 s.description           = 'SuhyNetWorker网络模块带缓存.'
