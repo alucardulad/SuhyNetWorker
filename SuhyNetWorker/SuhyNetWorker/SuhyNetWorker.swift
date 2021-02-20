@@ -96,7 +96,7 @@ fileprivate func requestApiwithReturnModel<T:modelClass>(someModel:T.Type,api:Su
                 finishedCallback(obj,requestDataModel)
             }
             break
-        case .failure(let error):
+        case .failure(let _):
             
             finishedCallback(obj,requestDataModel)
             
@@ -111,7 +111,15 @@ func DictionaryToJSON(dic:Any) -> Data {
         print("无法解析出JSONString")
         return Data()
     }
-    return try! JSONSerialization.data(withJSONObject: dic, options: [])
+    
+    if let result = try? JSONSerialization.data(withJSONObject: dic, options: [])
+    {
+        return result
+    }
+    else{
+        print("无法解析出JSONString")
+        return Data()
+    }
 }
 
 func ArrayToJSON(array:[Any]) -> Data {
@@ -119,8 +127,17 @@ func ArrayToJSON(array:[Any]) -> Data {
         print("无法解析出JSONString")
         return Data()
     }
-    return try! JSONSerialization.data(withJSONObject: array, options: [])
+   
+    if let result = try? JSONSerialization.data(withJSONObject: array, options: [])
+    {
+        return result
+    }
+    else{
+        print("无法解析出JSONString")
+        return Data()
+    }
 }
+
  func toModel<T:Codable>(someModel:T.Type,dic:Any)->T {
     let json = SuhyNetWorker.DictionaryToJSON(dic:dic)
     let decoder = CleanJSONDecoder()
