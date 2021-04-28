@@ -46,6 +46,6 @@ protocol SuhyNetWorkerResponseProtocol{
 }
 
 public struct SuhyNetWorkerResponse: SuhyNetWorkerResponseProtocol {
-    var value: SuhyValue<Any>
-    var api: SuhyNetWorkerProtocol
+    public var value: SuhyValue<Any>
+    public var api: SuhyNetWorkerProtocol
 }
