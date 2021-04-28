@@ -8,47 +8,19 @@
 import Foundation
 import Alamofire
 import CleanJSON
-open class SuhyNetWorkerBaseModel:NSObject,Codable {
 
-}
 
-public typealias modelClass = SuhyNetWorkerBaseModel
-/// api协议
-public protocol SuhyNetWorkerProtocol {
-    var baseUrl:String! { get }
-    var url:String! { get }
-    var apiType:HTTPMethod! { get }
-    var params:[String: AnyObject]! { get }
-    var headParams:HTTPHeaders! { get }
-    var dynamicParams:[String: AnyObject]! { get }
-    var isNeedCache:Bool! { get }
-    var encoding:ParameterEncoding! { get }
-}
-  
-public protocol SuhyNetWorkerWithModelProtocol{
-    var mdoelType:modelClass.Type{ get }
-    var objKeyStr:String!{ get }
-}
-
-public protocol SuhyNetWorkerApiModelProtocol:SuhyNetWorkerProtocol,SuhyNetWorkerWithModelProtocol{
-    
-}
-
-public enum RequestModel {
-    case model(model:modelClass)
-    case List(ary:[modelClass])
-    case none
-}
 
 
 /// api访问
 /// - Parameters:
 ///   - api: api模型
-///   - finishedCallback: 返回提示语句和返回数据
+///   - finishedCallback: 返回提示语句和返回原始的json数据
 /// - Returns:
-public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping (SuhyValue<Any>)->()){
+public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping (_ result :SuhyNetWorkerResponse)->()){
     SuhyNetWorker.request(api.url, method:api.apiType, params: api.params, dynamicParams: api.dynamicParams, encoding: api.encoding, headers: api.headParams).cache(api.isNeedCache).responseCacheAndJson { (obj) in
-        finishedCallback(obj)
+        let result = SuhyNetWorkerResponse.init(value: obj, api: api)
+        finishedCallback(result)
     }
 }
 
@@ -56,8 +28,8 @@ public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping
 /// - Parameters:
 ///   - api: api模型
 ///   - finishedCallback: 返回结果，和转换好了的模型
-/// - Returns: 无
-public func requestAPIModel(api:SuhyNetWorkerApiModelProtocol,finishedCallback:@escaping (_ result : SuhyValue<Any>,_ data : RequestModel) -> ()){
+/// - Returns: 无s
+public func requestAPIModel(api:SuhyNetWorkerApiModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum) -> ()){
     SuhyNetWorker.requestApiwithReturnModel(someModel: api.mdoelType.self, api: api) { (result, lists) in
         finishedCallback(result,lists)
     }
@@ -69,12 +41,12 @@ public func requestAPIModel(api:SuhyNetWorkerApiModelProtocol,finishedCallback:@
 ///   - someModel: 将要转换的模型类型，需要遵守Codable协议
 ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
 /// - Returns:
-fileprivate func requestApiwithReturnModel<T:modelClass>(someModel:T.Type,api:SuhyNetWorkerApiModelProtocol,finishedCallback:@escaping (_ result : SuhyValue<Any>,_ data : RequestModel) -> ())
+fileprivate func requestApiwithReturnModel<T:modelClass>(someModel:T.Type,api:SuhyNetWorkerApiModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum) -> ())
 {
     SuhyNetWorker.requestAPIModel(api: api) { (obj) in
         
-        var requestDataModel:RequestModel = .none
-        switch obj.result{
+        var requestDataModel:SuhyResponseEnum = .none
+        switch obj.value.result{
         case .success(let data):
             if let resultdic = data  as? [String : AnyObject]
             {
@@ -93,6 +65,7 @@ fileprivate func requestApiwithReturnModel<T:modelClass>(someModel:T.Type,api:Su
                 else{
                     requestDataModel = .none
                 }
+                
                 finishedCallback(obj,requestDataModel)
             }
             break

@@ -10,6 +10,7 @@
 import Foundation
 import Alamofire
 
+
 class RequestManager {
     static let `default` = RequestManager()
     private var requestTasks = [String: RequestTaskManager]()

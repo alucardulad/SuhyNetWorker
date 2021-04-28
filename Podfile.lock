@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.1)
+  - Alamofire (5.4.3)
   - Cache (5.3.0)
   - CleanJSON (1.0.8)
 
@@ -15,7 +15,7 @@ SPEC REPOS:
     - CleanJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Cache: 48762993ec44e1d93483c4d4a13edd18452326f4
   CleanJSON: 7cc2fbb8f3face17e80a25a2266199ad31002bfc
 
