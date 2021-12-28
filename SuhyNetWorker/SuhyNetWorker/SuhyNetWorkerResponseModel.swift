@@ -8,11 +8,6 @@
 import Foundation
 import Alamofire
 
-open class SuhyNetWorkerBaseModel:NSObject,Codable {
-
-}
-
-public typealias modelClass = SuhyNetWorkerBaseModel
 /// api协议
 public protocol SuhyNetWorkerProtocol {
     var baseUrl:String! { get }
@@ -25,18 +20,13 @@ public protocol SuhyNetWorkerProtocol {
     var encoding:ParameterEncoding! { get }
 }
   
-public protocol SuhyNetWorkerWithModelProtocol{
-    var mdoelType:modelClass.Type{ get }
+public protocol SuhyNetWorkerWithModelProtocol:SuhyNetWorkerProtocol{
     var objKeyStr:String!{ get }
 }
 
-public protocol SuhyNetWorkerApiModelProtocol:SuhyNetWorkerProtocol,SuhyNetWorkerWithModelProtocol{
-    
-}
-
-public enum SuhyResponseEnum {
-    case model(model:modelClass)
-    case List(ary:[modelClass])
+public enum SuhyResponseEnum<T> {
+    case model(model:T)
+    case List(ary:[T])
     case none
 }
 

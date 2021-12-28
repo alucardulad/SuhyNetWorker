@@ -24,40 +24,29 @@ public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping
     }
 }
 
-/// aip访问，返回model和结果
-/// - Parameters:
-///   - api: api模型
-///   - finishedCallback: 返回结果，和转换好了的模型
-/// - Returns: 无s
-public func requestAPIModel(api:SuhyNetWorkerApiModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum) -> ()){
-    SuhyNetWorker.requestApiwithReturnModel(someModel: api.mdoelType.self, api: api) { (result, lists) in
-        finishedCallback(result,lists)
-    }
-}
-
 /// api访问
 /// - Parameters:
 ///   - api: api
 ///   - someModel: 将要转换的模型类型，需要遵守Codable协议
 ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
 /// - Returns:
-fileprivate func requestApiwithReturnModel<T:modelClass>(someModel:T.Type,api:SuhyNetWorkerApiModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum) -> ())
+fileprivate func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyNetWorkerWithModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
 {
     SuhyNetWorker.requestAPIModel(api: api) { (obj) in
         
-        var requestDataModel:SuhyResponseEnum = .none
+        var requestDataModel:SuhyResponseEnum<T> = .none
         switch obj.value.result{
         case .success(let data):
             if let resultdic = data  as? [String : AnyObject]
             {
                 if let tempdic = resultdic[api.objKeyStr] as? [String : AnyObject]{
-                    let temp = SuhyNetWorker.toModel(someModel:someModel, dic: tempdic)
+                    let temp = SuhyNetWorker.toModel(someModel:modelType, dic: tempdic)
                     requestDataModel = .model(model: temp)
                 }
                 else if let tempArray = resultdic[api.objKeyStr] as? [[String : AnyObject]]{
                     var models = [T]()
                     for dic in tempArray {
-                        let temp = SuhyNetWorker.toModel(someModel:someModel, dic: dic)
+                        let temp = SuhyNetWorker.toModel(someModel:modelType, dic: dic)
                         models.append(temp)
                     }
                     requestDataModel = .List(ary: models)
@@ -69,7 +58,7 @@ fileprivate func requestApiwithReturnModel<T:modelClass>(someModel:T.Type,api:Su
                 finishedCallback(obj,requestDataModel)
             }
             break
-        case .failure(let _):
+        case .failure( _):
             
             finishedCallback(obj,requestDataModel)
             
