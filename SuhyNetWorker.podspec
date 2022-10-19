@@ -8,7 +8,7 @@ s.description           = 'SuhyNetWorker网络模块带缓存.'
 s.homepage              = 'https://github.com/alucardulad/SuhyNetWorker'
 s.authors               = { 'alucardulad' => 'alucardulad@gmail.com' }
 s.platform              = :ios, "11.0"
-s.source                = { :git => 'https://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@github.com/alucardulad/SuhyNetWorker.git',:tag => s.version  }
+s.source                = { :git => 'https://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@github.com/alucardulad/SuhyNetWorker.git',:tag => s.version  }
 s.requires_arc = true
 s.dependency 'Cache', '>= 6.0.0'
 s.dependency 'Alamofire', '>= 5.6.2'
