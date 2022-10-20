@@ -18,11 +18,11 @@ class DownloadManager {
     
     func download(
         _ url: String,
-        method: HTTPMethod = .get,
+        method: SuhyHTTPMethod = .get,
         parameters: Parameters? = nil,
         dynamicParams: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
-        headers: HTTPHeaders? = nil,
+        encoding: SuhyParameterEncoding = URLEncoding.default,
+        headers: SuhyHTTPHeaders? = nil,
         fileName: String? = nil)
         ->DownloadTaskManager
     {
@@ -158,10 +158,10 @@ public class DownloadTaskManager {
     @discardableResult
     fileprivate func download(
         _ url: String,
-        method: HTTPMethod = .get,
+        method: SuhyHTTPMethod = .get,
         parameters: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
-        headers: HTTPHeaders? = nil,
+        encoding: SuhyParameterEncoding = URLEncoding.default,
+        headers: SuhyHTTPHeaders? = nil,
         fileName: String?)
         -> DownloadTaskManager
     {

@@ -46,11 +46,11 @@ public var openResultLog: Bool = true
 @discardableResult
 public func request(
     _ url: String,
-    method: HTTPMethod = .get,
+    method: SuhyHTTPMethod = .get,
     params: Parameters? = nil,
     dynamicParams: Parameters? = nil,
-    encoding: ParameterEncoding = URLEncoding.default,
-    headers: HTTPHeaders? = nil)
+    encoding: SuhyParameterEncoding = URLEncoding.default,
+    headers: SuhyHTTPHeaders? = nil)
     -> RequestTaskManager
 {
     return RequestManager.default.request(url, method: method, params: params, dynamicParams: dynamicParams, encoding: encoding, headers: headers)
@@ -116,11 +116,11 @@ public func removeObjectCache(_ url: String, params: [String: Any]? = nil, dynam
 /// - Returns: DownloadTaskManager
 public func download(
     _ url: String,
-    method: HTTPMethod = .get,
+    method: SuhyHTTPMethod = .get,
     parameters: Parameters? = nil,
     dynamicParams: Parameters? = nil,
-    encoding: ParameterEncoding = URLEncoding.default,
-    headers: HTTPHeaders? = nil,
+    encoding: SuhyParameterEncoding = URLEncoding.default,
+    headers: SuhyHTTPHeaders? = nil,
     fileName: String? = nil)
     ->DownloadTaskManager
 {

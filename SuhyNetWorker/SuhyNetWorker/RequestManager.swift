@@ -23,11 +23,11 @@ class RequestManager {
     
     func request(
         _ url: String,
-        method: HTTPMethod = .get,
+        method: SuhyHTTPMethod = .get,
         params: Parameters? = nil,
         dynamicParams: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
-        headers: HTTPHeaders? = nil)
+        encoding: SuhyParameterEncoding = URLEncoding.default,
+        headers: SuhyHTTPHeaders? = nil)
         -> RequestTaskManager
     {
         let key = cacheKey(url, params, dynamicParams)
@@ -132,11 +132,11 @@ public class RequestTaskManager {
     @discardableResult
     fileprivate func request(
         _ url: String,
-        method: HTTPMethod = .get,
+        method: SuhyHTTPMethod = .get,
         params: Parameters? = nil,
         cacheKey: String,
-        encoding: ParameterEncoding = URLEncoding.default,
-        headers: HTTPHeaders? = nil)
+        encoding: SuhyParameterEncoding = URLEncoding.default,
+        headers: SuhyHTTPHeaders? = nil)
         -> RequestTaskManager
     {
         self.cacheKey = cacheKey
