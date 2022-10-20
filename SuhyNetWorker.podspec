@@ -5,10 +5,10 @@ s.version               = '1.3.9'
 s.license               = { :type => 'MIT'}
 s.summary               = 'SuhyNetWorke网络模块带缓存'
 s.description           = 'SuhyNetWorker网络模块带缓存.'
-s.homepage              = 'https://github.com/alucardulad/SuhyNetWorker'
+s.homepage              = 'https://e.coding.net/alucardulad/suhynetworker/SuhyNetWorkerNew.git'
 s.authors               = { 'alucardulad' => 'alucardulad@gmail.com' }
 s.platform              = :ios, "11.0"
-s.source                = { :git => 'https://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@github.com/alucardulad/SuhyNetWorker.git',:tag => s.version  }
+s.source                = { :git => 'https://e.coding.net/alucardulad/suhynetworker/SuhyNetWorkerNew.git',:tag => s.version  }
 s.requires_arc = true
 s.dependency 'Cache', '>= 6.0.0'
 s.dependency 'Alamofire', '>= 5.6.2'
