@@ -8,7 +8,7 @@
 import UIKit
 import CleanJSON
 
-class SuhyNetTools: NSObject {
+open class SuhyNetTools: NSObject {
 
     open class func DictionaryToJSON(dic:Any) -> Data {
         if (!JSONSerialization.isValidJSONObject(dic as! NSDictionary)) {
