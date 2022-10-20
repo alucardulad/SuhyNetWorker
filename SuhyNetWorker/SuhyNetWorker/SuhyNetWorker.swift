@@ -26,7 +26,7 @@ public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping
 ///   - someModel: 将要转换的模型类型，需要遵守Codable协议
 ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
 /// - Returns:
-fileprivate func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyNetWorkerWithModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
+public func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyNetWorkerWithModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
 {
     SuhyNetWorker.requestAPIModel(api: api) { (obj) in
         
