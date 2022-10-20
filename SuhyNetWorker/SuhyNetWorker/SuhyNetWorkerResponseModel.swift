@@ -8,16 +8,20 @@
 import Foundation
 import Alamofire
 
+public typealias SuhyHTTPMethod = HTTPMethod
+public typealias SuhyHTTPHeaders = HTTPHeaders
+public typealias SuhyParameterEncoding = ParameterEncoding
+
 /// api协议
 public protocol SuhyNetWorkerProtocol {
     var baseUrl:String! { get }
     var url:String! { get }
-    var apiType:HTTPMethod! { get }
+    var apiType:SuhyHTTPMethod! { get }
     var params:[String: AnyObject]! { get }
-    var headParams:HTTPHeaders! { get }
+    var headParams:SuhyHTTPHeaders! { get }
     var dynamicParams:[String: AnyObject]! { get }
     var isNeedCache:Bool! { get }
-    var encoding:ParameterEncoding! { get }
+    var encoding:SuhyParameterEncoding! { get }
 }
   
 public protocol SuhyNetWorkerWithModelProtocol:SuhyNetWorkerProtocol{
