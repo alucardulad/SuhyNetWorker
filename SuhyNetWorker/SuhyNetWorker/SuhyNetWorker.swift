@@ -7,10 +7,6 @@
 
 import Foundation
 import Alamofire
-import CleanJSON
-
-
-
 
 /// api访问
 /// - Parameters:
@@ -40,13 +36,13 @@ fileprivate func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyN
             if let resultdic = data  as? [String : AnyObject]
             {
                 if let tempdic = resultdic[api.objKeyStr] as? [String : AnyObject]{
-                    let temp = SuhyNetWorker.toModel(someModel:modelType, dic: tempdic)
+                    let temp = SuhyNetTools.toModel(someModel:modelType, dic: tempdic)
                     requestDataModel = .model(model: temp)
                 }
                 else if let tempArray = resultdic[api.objKeyStr] as? [[String : AnyObject]]{
                     var models = [T]()
                     for dic in tempArray {
-                        let temp = SuhyNetWorker.toModel(someModel:modelType, dic: dic)
+                        let temp = SuhyNetTools.toModel(someModel:modelType, dic: dic)
                         models.append(temp)
                     }
                     requestDataModel = .List(ary: models)
@@ -66,43 +62,4 @@ fileprivate func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyN
         }
     }
 
-}
-
-func DictionaryToJSON(dic:Any) -> Data {
-    if (!JSONSerialization.isValidJSONObject(dic as! NSDictionary)) {
-        print("无法解析出JSONString")
-        return Data()
-    }
-    
-    if let result = try? JSONSerialization.data(withJSONObject: dic, options: [])
-    {
-        return result
-    }
-    else{
-        print("无法解析出JSONString")
-        return Data()
-    }
-}
-
-func ArrayToJSON(array:[Any]) -> Data {
-    if (!JSONSerialization.isValidJSONObject(array as! NSArray)) {
-        print("无法解析出JSONString")
-        return Data()
-    }
-   
-    if let result = try? JSONSerialization.data(withJSONObject: array, options: [])
-    {
-        return result
-    }
-    else{
-        print("无法解析出JSONString")
-        return Data()
-    }
-}
-
- func toModel<T:Codable>(someModel:T.Type,dic:Any)->T {
-    let json = SuhyNetWorker.DictionaryToJSON(dic:dic)
-    let decoder = CleanJSONDecoder()
-    let temp = try! decoder.decode(someModel, from: json)
-    return temp
 }
