@@ -110,7 +110,7 @@ public func removeObjectCache(_ url: String, params: [String: Any]? = nil, dynam
 ///   - method: .get .post ... 默认.get
 ///   - parameters: 参数
 ///   - dynamicParams: 变化的参数，例如 时间戳-token 等
-///   - encoding: 编码方式
+///   - encoding: 编码方式   
 ///   - headers: 请求头
 ///   - fileName: 自定义文件名，需要带文件扩展名
 /// - Returns: DownloadTaskManager
