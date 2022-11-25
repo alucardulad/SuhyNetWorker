@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import HandyJSON
 
 /// api访问
 /// - Parameters:
@@ -23,10 +24,10 @@ public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping
 /// api访问
 /// - Parameters:
 ///   - api: api
-///   - someModel: 将要转换的模型类型，需要遵守Codable协议
+///   - someModel: 将要转换的模型类型，需要遵守HandyJSON协议
 ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
 /// - Returns:
-public func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyNetWorkerWithModelProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
+public func requestApiwithReturnModel<T:HandyJSON>(modelType:T.Type,api:SuhyNetWorkerProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
 {
     SuhyNetWorker.requestAPIModel(api: api) { (obj) in
         
@@ -35,22 +36,8 @@ public func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyNetWor
         case .success(let data):
             if let resultdic = data  as? [String : AnyObject]
             {
-                if let tempdic = resultdic[api.objKeyStr] as? [String : AnyObject]{
-                    let temp = SuhyNetTools.toModel(someModel:modelType, dic: tempdic)
-                    requestDataModel = .model(model: temp)
-                }
-                else if let tempArray = resultdic[api.objKeyStr] as? [[String : AnyObject]]{
-                    var models = [T]()
-                    for dic in tempArray {
-                        let temp = SuhyNetTools.toModel(someModel:modelType, dic: dic)
-                        models.append(temp)
-                    }
-                    requestDataModel = .List(ary: models)
-                }
-                else{
-                    requestDataModel = .none
-                }
-                
+                let temp = SuhyNetTools.toModel(someModel:modelType, dic: resultdic)
+                requestDataModel = .model(model: temp)
                 finishedCallback(obj,requestDataModel)
             }
             break
@@ -63,3 +50,37 @@ public func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api:SuhyNetWor
     }
 
 }
+
+
+///// api访问
+///// - Parameters:
+/////   - api: SuhyNetWorkerModelsApiProtocol的API
+/////   ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
+///// - Returns:
+//public func requestApiwithReturnModel<T:HandyJSON>(api:SuhyNetWorkerModelsApi<T>,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
+//{
+//    SuhyNetWorker.requestAPIModel(api: api) { (obj) in
+//        
+//        var requestDataModel:SuhyResponseEnum<T> = .none
+//        switch obj.value.result{
+//        case .success(let data):
+//            if let resultdic = data  as? [String : AnyObject]
+//            {
+//                
+//                let temp = SuhyNetTools.toModel(someModel: api.modelType.s, dic: resultdic)
+//                requestDataModel = .model(model: temp)
+//                finishedCallback(obj,requestDataModel)
+//            }
+//            break
+//        case .failure( _):
+//            
+//            finishedCallback(obj,requestDataModel)
+//            
+//            break
+//        }
+//    }
+//
+//}
+
+
+

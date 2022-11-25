@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import HandyJSON
 
 public typealias SuhyHTTPMethod = HTTPMethod
 public typealias SuhyHTTPHeaders = HTTPHeaders
@@ -31,17 +32,30 @@ public protocol SuhyNetWorkerProtocol {
     ///转码
     var encoding:SuhyParameterEncoding! { get }
 }
-  
-public protocol SuhyNetWorkerWithModelProtocol:SuhyNetWorkerProtocol{
-    ///解析数组数组字段
-    var objKeyStr:String!{ get }
+
+public struct SuhyNetWorkerModelsApi<T:HandyJSON>:SuhyNetWorkerProtocol{
+    public var baseUrl: String!
+    
+    public var url: String!
+    
+    public var apiType: SuhyHTTPMethod!
+    
+    public var params: [String : AnyObject]!
+    
+    public var headParams: SuhyHTTPHeaders!
+    
+    public var dynamicParams: [String : AnyObject]!
+    
+    public var isNeedCache: Bool!
+    
+    public var encoding: SuhyParameterEncoding!
+    
+    var modelType:T
 }
 
 public enum SuhyResponseEnum<T> {
     ///单个模型
     case model(model:T)
-    ///数组模型
-    case List(ary:[T])
     ///空模型
     case none
 }
