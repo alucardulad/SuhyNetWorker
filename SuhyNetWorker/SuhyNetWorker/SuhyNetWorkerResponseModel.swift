@@ -33,29 +33,12 @@ public protocol SuhyNetWorkerProtocol {
     var encoding:SuhyParameterEncoding! { get }
 }
 
-public struct SuhyNetWorkerModelsApi<T:HandyJSON>:SuhyNetWorkerProtocol{
-    public var baseUrl: String!
-    
-    public var url: String!
-    
-    public var apiType: SuhyHTTPMethod!
-    
-    public var params: [String : AnyObject]!
-    
-    public var headParams: SuhyHTTPHeaders!
-    
-    public var dynamicParams: [String : AnyObject]!
-    
-    public var isNeedCache: Bool!
-    
-    public var encoding: SuhyParameterEncoding!
-    
-    var modelType:T
-}
-
 public enum SuhyResponseEnum<T> {
     ///单个模型
     case model(model:T)
+    ///文字
+    case txt(message:String)
+
     ///空模型
     case none
 }

@@ -39,48 +39,21 @@ public func requestApiwithReturnModel<T:HandyJSON>(modelType:T.Type,api:SuhyNetW
                 let temp = SuhyNetTools.toModel(someModel:modelType, dic: resultdic)
                 requestDataModel = .model(model: temp)
                 finishedCallback(obj,requestDataModel)
+            }else if let str = data as? String{
+                requestDataModel = .txt(message: str)
+                finishedCallback(obj,requestDataModel)
+            }else{
+                finishedCallback(obj,requestDataModel)
             }
             break
         case .failure( _):
-            
             finishedCallback(obj,requestDataModel)
-            
             break
         }
     }
-
 }
 
 
-///// api访问
-///// - Parameters:
-/////   - api: SuhyNetWorkerModelsApiProtocol的API
-/////   ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
-///// - Returns:
-//public func requestApiwithReturnModel<T:HandyJSON>(api:SuhyNetWorkerModelsApi<T>,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
-//{
-//    SuhyNetWorker.requestAPIModel(api: api) { (obj) in
-//        
-//        var requestDataModel:SuhyResponseEnum<T> = .none
-//        switch obj.value.result{
-//        case .success(let data):
-//            if let resultdic = data  as? [String : AnyObject]
-//            {
-//                
-//                let temp = SuhyNetTools.toModel(someModel: api.modelType.s, dic: resultdic)
-//                requestDataModel = .model(model: temp)
-//                finishedCallback(obj,requestDataModel)
-//            }
-//            break
-//        case .failure( _):
-//            
-//            finishedCallback(obj,requestDataModel)
-//            
-//            break
-//        }
-//    }
-//
-//}
 
 
 
