@@ -6,7 +6,7 @@ target 'SuhyNetWorker' do
 
 pod 'Alamofire', '~> 5.6.4'
 pod 'Cache', '~> 6.0.0'
-pod 'HandyJSON', '~> 5.0.4-beta'
+pod 'CleanJSON', '~> 1.0.9'
 end
 
 post_install do |installer|

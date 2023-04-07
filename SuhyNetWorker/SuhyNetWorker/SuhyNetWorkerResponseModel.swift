@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-import HandyJSON
+import CleanJSON
 
 public typealias SuhyHTTPMethod = HTTPMethod
 public typealias SuhyHTTPHeaders = HTTPHeaders

@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-import HandyJSON
+import CleanJSON
 
 /// api访问
 /// - Parameters:
@@ -34,10 +34,10 @@ public func requestAPIModel(api:SuhyNetWorkerProtocol,finishedCallback:@escaping
 /// api访问
 /// - Parameters:
 ///   - api: api
-///   - someModel: 将要转换的模型类型，需要遵守HandyJSON协议
+///   - someModel: 将要转换的模型类型，需要遵守Codable协议
 ///   - finishedCallback: 返回模型（模型数组或者单个模型），返回是否成功的提示语句
 /// - Returns:
-public func requestApiwithReturnModel<T:HandyJSON>(modelType:T.Type,api: SuhyNetWorkerProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
+public func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api: SuhyNetWorkerProtocol,finishedCallback:@escaping (_ result : SuhyNetWorkerResponse,_ data : SuhyResponseEnum<T>) -> ())
 {
     SuhyNetWorker.requestAPIModel(api: api) { (obj) in
         
