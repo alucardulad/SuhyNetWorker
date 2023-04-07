@@ -6,12 +6,47 @@
 //
 
 import UIKit
-import HandyJSON
+import CleanJSON
 
 open class SuhyNetTools: NSObject {
-    open class func toModel<T:HandyJSON>(someModel:T.Type,dic:[String : AnyObject])->T {
-        let temp = someModel.deserialize(from: dic)
-        return temp!
+
+    open class func DictionaryToJSON(dic:Any) -> Data {
+        if (!JSONSerialization.isValidJSONObject(dic as! NSDictionary)) {
+            print("无法解析出JSONString")
+            return Data()
+        }
+        
+        if let result = try? JSONSerialization.data(withJSONObject: dic, options: [])
+        {
+            return result
+        }
+        else{
+            print("无法解析出JSONString")
+            return Data()
+        }
+    }
+    
+    open class func ArrayToJSON(array:[Any]) -> Data {
+        if (!JSONSerialization.isValidJSONObject(array as! NSArray)) {
+            print("无法解析出JSONString")
+            return Data()
+        }
+       
+        if let result = try? JSONSerialization.data(withJSONObject: array, options: [])
+        {
+            return result
+        }
+        else{
+            print("无法解析出JSONString")
+            return Data()
+        }
+    }
+    
+    open class func toModel<T:Codable>(someModel:T.Type,dic:Any)->T {
+        let json = SuhyNetTools.DictionaryToJSON(dic:dic)
+        let decoder = CleanJSONDecoder()
+        let temp = try! decoder.decode(someModel, from: json)
+        return temp
     }
 
 }

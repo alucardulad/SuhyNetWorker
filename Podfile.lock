@@ -1,24 +1,24 @@
 PODS:
   - Alamofire (5.6.4)
   - Cache (6.0.0)
-  - HandyJSON (5.0.4-beta)
+  - CleanJSON (1.0.9)
 
 DEPENDENCIES:
   - Alamofire (~> 5.6.4)
   - Cache (~> 6.0.0)
-  - HandyJSON (~> 5.0.4-beta)
+  - CleanJSON (~> 1.0.9)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Cache
-    - HandyJSON
+    - CleanJSON
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
-  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
+  CleanJSON: 910a36465ce4829e264a902ccf6d1455fdd9f980
 
-PODFILE CHECKSUM: 61654690b58b44f8541b3406dd1ebde5072b041f
+PODFILE CHECKSUM: a3deb4f186c0af7eefcbdc0df53b67d4ee9f68e4
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0
