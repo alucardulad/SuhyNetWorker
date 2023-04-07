@@ -207,22 +207,6 @@ public class RequestTaskManager {
         let stringResponse = SuhyStringResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
         stringResponse.responseCacheAndString(completion: completion)
     }
-    /// 获取缓存JSON
-    @discardableResult
-    public func cacheJson(completion: @escaping (Any)->()) -> SuhyJsonResponse {
-        let jsonResponse = SuhyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
-        return jsonResponse.cacheJson(completion:completion)
-    }
-    /// 响应JSON
-    public func responseJson(completion: @escaping (SuhyValue<Any>)->()) {
-        let jsonResponse = SuhyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
-        jsonResponse.responseJson(completion: completion)
-    }
-    /// 先获取缓存JSON，再响应JSON
-    public func responseCacheAndJson(completion: @escaping (SuhyValue<Any>)->()) {
-        let jsonResponse = SuhyJsonResponse(dataRequest: dataRequest!, cache: cache, cacheKey: cacheKey, completionClosure: completionClosure)
-        jsonResponse.responseCacheAndJson(completion: completion)
-    }
 }
 // MARK: - SuhyBaseResponse
 public class SuhyResponse {
@@ -273,43 +257,7 @@ public class SuhyResponse {
         completion(result)
     }
 }
-// MARK: - SuhyJsonResponse
-public class SuhyJsonResponse: SuhyResponse {
-    /// 响应JSON
-    func responseJson(completion: @escaping (SuhyValue<Any>)->()) {
-        dataRequest.responseJSON(completionHandler: { response in
-            self.response(response: response, completion: completion)
-        })
-    }
-    fileprivate func responseCacheAndJson(completion: @escaping (SuhyValue<Any>)->()) {
-        if cache { cacheJson(completion: { (json) in
-            let res = SuhyValue(isCacheData: true, result: Alamofire.AFResult.success(json), response: nil)
-            completion(res)
-        }) }
-        dataRequest.responseJSON { (response) in
-            self.responseCache(response: response, completion: completion)
-        }
-    }
-    /// 获取缓存json
-    @discardableResult
-    fileprivate func cacheJson(completion: @escaping (Any)->()) -> SuhyJsonResponse {
-        if let data = CacheManager.default.objectSync(forKey: cacheKey)?.data,
-            let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-            if openResultLog {
-                SuhyLog("=================缓存=====================")
-                if let str = String(data: data, encoding: .utf8) {
-                    SuhyLog(str)
-                }
-            }
-            completion(json)
-        } else {
-            if openResultLog {
-                SuhyLog("读取缓存失败")
-            }
-        }
-        return self
-    }
-}
+
 // MARK: - SuhyStringResponse
 public class SuhyStringResponse: SuhyResponse {
     /// 响应String
