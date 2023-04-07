@@ -11,7 +11,7 @@ s.platform              = :ios, "11.0"
 s.source                = { :git => 'https://github.com/alucardulad/SuhyNetWorker.git',:tag => s.version  }
 s.requires_arc = true
 s.dependency 'Cache', '6.0.0'
-s.dependency 'Alamofire', '5.6.2'
+s.dependency 'Alamofire', '5.6.4'
 s.dependency 'HandyJSON', '5.0.4-beta'
 s.source_files = "SuhyNetWorker/SuhyNetWorker/*.swift" 
 s.pod_target_xcconfig = { "SWIFT_VERSION" => "5.0" }
