@@ -26,27 +26,16 @@ open class SuhyNetTools: NSObject {
         }
     }
     
-    open class func ArrayToJSON(array:[Any]) -> Data {
-        if (!JSONSerialization.isValidJSONObject(array as! NSArray)) {
-            print("无法解析出JSONString")
-            return Data()
-        }
-       
-        if let result = try? JSONSerialization.data(withJSONObject: array, options: [])
-        {
-            return result
-        }
-        else{
-            print("无法解析出JSONString")
-            return Data()
-        }
-    }
-    
-    open class func toModel<T:Codable>(someModel:T.Type,dic:Any)->T {
+    open class func toModel<T:Codable>(someModel:T.Type, dic:Any) throws -> T? {
         let json = SuhyNetTools.DictionaryToJSON(dic:dic)
         let decoder = CleanJSONDecoder()
-        let temp = try! decoder.decode(someModel, from: json)
-        return temp
+        do {
+            let temp = try decoder.decode(someModel, from: json)
+            return temp
+        } catch {
+            print("解码失败: \(error)")
+            return nil
+        }
     }
 
 }

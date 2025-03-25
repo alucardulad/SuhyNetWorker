@@ -46,8 +46,9 @@ public func requestApiwithReturnModel<T:Codable>(modelType:T.Type,api: SuhyNetWo
         case .success(let data):
             if let resultdic = data  as? [String : AnyObject]
             {
-                let temp = SuhyNetTools.toModel(someModel:modelType, dic: resultdic)
-                requestDataModel = .model(model: temp)
+                if  let temp = try?SuhyNetTools.toModel(someModel:modelType, dic: resultdic){
+                    requestDataModel = .model(model: temp)
+                }
                 finishedCallback(obj,requestDataModel)
             }else if let str = data as? String{
                 requestDataModel = .txt(message: str)
