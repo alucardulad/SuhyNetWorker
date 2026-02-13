@@ -3,6 +3,7 @@
 ![Support](https://img.shields.io/badge/support-swift%204%2B-green.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS%2011.0%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/swift-5.0%2B-orange.svg)
+![SPM](https://img.shields.io/badge/package-manager-Swift%20Package%20Manager-lightgrey.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 ![Version](https://img.shields.io/badge/version-1.5.6-purple.svg)
 
@@ -172,15 +173,42 @@ pod update
 
 #### 2. Swift Package Manager（SPM）
 
-在 `Package.swift` 中添加：
+在 Xcode 中添加依赖：
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/alucardulad/SuhyNetWorker.git", from: "1.5.6")
-]
+1. **方法一：通过 Xcode UI**
+
+   - 打开 Xcode → File → Add Packages
+   - 输入仓库地址：`https://github.com/alucardulad/SuhyNetWorker.git`
+   - 选择版本：`1.5.6`
+   - 点击 "Add Package"
+
+2. **方法二：通过 Package.swift**
+
+   在你的 `Package.swift` 中添加依赖：
+
+   ```swift
+   dependencies: [
+       .package(
+           url: "https://github.com/alucardulad/SuhyNetWorker.git",
+           from: "1.5.6"
+       )
+   ]
+   ```
+
+3. **方法三：通过 SPM CLI**
+
+   ```bash
+   swift package add https://github.com/alucardulad/SuhyNetWorker.git
+   ```
+
+#### 3. 手动集成
+
+直接将 `SuhyNetWorker/SuhyNetWorker` 文件夹复制到你的项目中，并手动添加以下依赖：
+
+```ruby
+pod 'Alamofire', '~> 5.6.4'
+pod 'Cache', '~> 6.0.0'
 ```
-
-或在 Xcode → File → Add Packages 中添加。
 
 ### 初始化
 
@@ -457,6 +485,17 @@ SuhyNetWorker/
 | **NetworkEngine** | 封装 Alamofire 请求引擎 |
 | **SuhyNet** | 主入口，提供全局 API |
 
+### Swift Package Manager 说明
+
+当使用 SPM 安装时，依赖库会自动下载：
+
+| 依赖库 | 版本 | 用途 |
+|--------|------|------|
+| **Alamofire** | 5.6.4+ | HTTP 网络请求 |
+| **Cache** | 6.0.0+ | 本地缓存管理 |
+
+CleanJSON 是项目自带的工具类，无需额外安装。
+
 ---
 
 ## ⚙️ 配置选项
@@ -536,6 +575,36 @@ SuhyNetWorker.download(url)
 ## 📄 许可证
 
 本项目采用 [MIT 许可证](LICENSE)。
+
+### SPM 使用方式
+
+通过 Swift Package Manager 使用本项目：
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YourProject",
+    dependencies: [
+        .package(
+            url: "https://github.com/alucardulad/SuhyNetWorker.git",
+            from: "1.5.6"
+        )
+    ],
+    targets: [
+        .target(
+            name: "YourProject",
+            dependencies: ["SuhyNetWorker"]
+        )
+    ]
+)
+```
+
+然后在代码中导入使用：
+
+```swift
+import SuhyNetWorker
+```
 
 ```
 Copyright (c) 2020-2025 SuhyNetWorker
